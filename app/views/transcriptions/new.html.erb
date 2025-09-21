@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Transcribe</title>
+    <meta name="csrf-token" content="<%= form_authenticity_token %>">
+    <%= stylesheet_link_tag "application", "transcriptions", media: "all" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div class="card" data-controller="transcribe">
+      <h1>Transcribe</h1>
+
+      <div class="section" id="controls">
+        <button 
+          data-action="click->transcribe#start" 
+          data-transcribe-target="startBtn" 
+          class="btn">
+          🎙 Start Listening
+        </button>
+        <button 
+          data-action="click->transcribe#stop" 
+          data-transcribe-target="stopBtn" 
+          disabled 
+          class="btn secondary">
+          ⏹ Stop Listening
+        </button>
+      </div>
+
+      <div class="section">
+        <h2>Live transcription</h2>
+        <div data-transcribe-target="live" class="summary-box"></div>
+      </div>
+
+      <div class="section">
+        <h2>Full transcription</h2>
+        <div data-transcribe-target="final" class="summary-box"></div>
+      </div>
+
+      <div class="section">
+        <h2>Summary</h2>
+        <div data-transcribe-target="summary" class="summary-box"></div>
+      </div>
+    </div>
+  </body>
+</html>
